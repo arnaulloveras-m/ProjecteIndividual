@@ -129,3 +129,28 @@ h1 {
 .header-container h1 {
   margin-right: 10px; /* Espacio entre el texto y la imagen */
 }
+
+.time-list-container {
+  max-height: 300px; /* Altura máxima del contenedor de la lista */
+  overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
+}
+
+.buttonCube {
+  background-color: #fff; /* Color de fondo blanco */
+  border: none; /* Elimina el borde */
+  color: #333; /* Color del texto */
+  padding: 15px 32px; /* Ajusta el relleno */
+  text-align: center; /* Centra el texto horizontalmente */
+  text-decoration: none; /* Elimina el subrayado del texto */
+  display: inline-block;
+  font-size: 16px; /* Tamaño de la fuente */
+  margin: 4px 2px; /* Ajusta el margen */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  border-radius: 10px; /* Ajusta la esquina redondeada */
+  transition: background-color 0.3s, color 0.3s; /* Agrega transiciones suaves para el color de fondo y el color del texto */
+}
+
+.buttonCube:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar por encima */
+  color: #666; /* Cambia el color del texto al pasar por encima */
+}
