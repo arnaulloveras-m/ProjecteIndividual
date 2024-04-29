@@ -24,10 +24,6 @@ function App() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState("3x3");
 
-
-    // Funciones para manejar el registro de usuario
-    // Función para manejar el registro de usuario
-// Función para manejar el registro de usuario
     const handleRegister = () => {
         if (localStorage.getItem(username)) {
             alert('El nombre de usuario ya está registrado. Por favor, elige otro.');
@@ -41,11 +37,7 @@ function App() {
         //setPassword('');
     };
 
-
-    // Función para manejar el inicio de sesión
-// Función para manejar el cierre de sesión
     const handleLogout = () => {
-        // Guardar los tiempos antes de cerrar sesión
         saveTimesToLocalStorage(times);
         setLoggedInUser(null);
         setTimes([]);
@@ -53,29 +45,25 @@ function App() {
         setPassword('');
     };
 
-// Función para cargar los tiempos del localStorage al iniciar la sesión
     const loadTimesFromLocalStorage = (username) => {
         const userJson = localStorage.getItem(username);
         console.log(userJson)
-        console.log("User JSON:", userJson); // Verificar el JSON del usuario recuperado
+        console.log("User JSON:", userJson);
         const user = JSON.parse(userJson);
-        console.log("User object:", user); // Verificar el objeto de usuario parseado
+        console.log("User object:", user);
         return user && user.times ? user.times : [];
     };
 
     useEffect(() => {
-        // Cargar los tiempos del almacenamiento local al iniciar la aplicación
         if (loggedInUser) {
-            const storedTimes = loadTimesFromLocalStorage(username); // Pasar loggedInUser como argumento
+            const storedTimes = loadTimesFromLocalStorage(username);
             if (Array.isArray(storedTimes)) {
                 setTimes(storedTimes);
             } else {
-                setTimes([]); // Establecer times como un array vacío si storedTimes no es un array
+                setTimes([]);
             }
         }
     }, [loggedInUser]);
-
-
 
     const handleLogin = () => {
         const userJson = localStorage.getItem(username);
@@ -83,7 +71,7 @@ function App() {
             const user = JSON.parse(userJson);
             if (user.password === password) {
                 setLoggedInUser(username);
-                setTimes(user.times); // Cargar los tiempos del usuario al iniciar sesión
+                setTimes(user.times);
                 setUsername('');
                 //setPassword('');
             } else {
@@ -98,8 +86,6 @@ function App() {
         localStorage.setItem(loggedInUser, JSON.stringify({ username: loggedInUser, password: password, times }));
     };
 
-
-// Función para manejar el registro de tiempos
     const handleTimeRegistration = () => {
         saveTime();
         if (selectedOption === '3x3') {
@@ -109,18 +95,14 @@ function App() {
         }
     };
 
-
-
-
-    // Funciones de utilidad para manejar el tiempo
     const timeStringToSeconds = (timeString) => {
         if (typeof timeString !== 'string') {
-            return 0; // Si no es una cadena válida, devolver 0 segundos
+            return 0;
         }
 
         const timeParts = timeString.split(':');
         if (timeParts.length !== 2) {
-            return 0; // Si la cadena no está en el formato esperado, devolver 0 segundos
+            return 0;
         }
 
         const [minutes, seconds] = timeParts.map(num => parseInt(num));
@@ -133,7 +115,6 @@ function App() {
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}s`;
     };
 
-    // Funciones para calcular las medias y los mejores y peores tiempos
     const calculateAverageAllTimes = () => {
         if (times.length === 0) return 0;
         const totalSeconds = times.reduce((acc, cur) => acc + timeStringToSeconds(cur.input), 0);
@@ -166,26 +147,11 @@ function App() {
         return secondsToTimeString(worstTimeInSeconds);
     };
 
-    const handleScroll = (e) => {
-        setScrollPosition(e.target.scrollTop);
-    };
-
     useEffect(() => {
         if (listRef.current) {
             listRef.current.scrollTop = scrollPosition;
         }
     }, [scrollPosition]);
-
-    // Funciones para la navegación de la lista
-    const scrollToTop = () => {
-        setScrollPosition(0);
-    };
-
-    const scrollToBottom = () => {
-        if (listRef.current) {
-            listRef.current.scrollTop = listRef.current.scrollHeight;
-        }
-    };
 
     const combinations = [
         "L2 F U2 B R2 B U2 F2 U2 R2 F U2 L' B D' U2 L F2 L2 B F'",
@@ -252,13 +218,11 @@ function App() {
         return combinations[Math.floor(Math.random() * combinations.length)];
     };
 
-    // Función para manejar la presentación del modal de edición
     const handleTimeClick = (index) => {
         setSelectedTimeIndex(index);
-        setEditedTime(times[index].input); // Establecer el tiempo actual en el estado de tiempo editado
+        setEditedTime(times[index].input);
     };
 
-    // Función para manejar el envío del formulario de edición
     const handleEditFormSubmit = (e) => {
         e.preventDefault();
         if (editedTime.trim() !== '') {
@@ -318,7 +282,6 @@ function App() {
         }
     };
 
-    // Función para cargar los tiempos del usuario desde el localStorage al iniciar la sesión
     useEffect(() => {
         if (loggedInUser) {
             const userJson = localStorage.getItem(loggedInUser);
@@ -349,7 +312,6 @@ function App() {
             {loggedInUser ? (
                 <div>
                     <button onClick={handleLogout}>Cerrar Sesión</button>
-                    {/* Resto del contenido de la aplicación para usuarios autenticados */}
                 </div>
             ) : (
                 <div>
@@ -395,8 +357,6 @@ function App() {
                 </div>
             </div>
 
-
-            {/* Contenedor de la lista de tiempos */}
             <div className="time-list-container">
                 <ul className="time-list" ref={listRef}>
                     {times.map((item, index) => (
@@ -407,7 +367,6 @@ function App() {
                 </ul>
             </div>
 
-            {/* Sección de estadísticas */}
             <div className="stats-container">
                 <h2>Estadísticas</h2>
                 <p>Media de todos los tiempos registrados: {secondsToTimeString(calculateAverageAllTimes())}</p>
@@ -417,15 +376,12 @@ function App() {
                 <p>Peor tiempo: {getWorstTime()}</p>
             </div>
 
-
-
-            {/* Modal de edición */}
             <Modal
                 isOpen={selectedTimeIndex !== null}
                 onRequestClose={() => setSelectedTimeIndex(null)}
                 contentLabel="Editar Tiempo"
-                className="Modal" // Agrega la clase para el estilo de la ventana modal
-                overlayClassName="ModalOverlay" // Agrega la clase para el estilo del fondo oscuro
+                className="Modal"
+                overlayClassName="ModalOverlay"
             >
 
                 <h2>Editar Tiempo</h2>
