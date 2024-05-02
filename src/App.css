@@ -81,23 +81,23 @@ h1 {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  margin-top: 20px;
 }
 
 .button-container button {
-  margin: 0 10px; /* Ajusta el margen entre los botones según sea necesario */
-  padding: 10px 20px; /* Ajusta el relleno de los botones */
-  font-size: 16px; /* Ajusta el tamaño de la fuente */
-  color: #333; /* Color del texto */
-  background-color: #ddd; /* Color de fondo inicial */
-  border: none; /* Elimina el borde */
-  border-radius: 5px; /* Ajusta la esquina redondeada */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  transition: background-color 0.3s; /* Agrega una transición suave al cambiar el color de fondo */
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: #ddd;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .button-container button:hover {
-  background-color: #777; /* Cambia el color de fondo al pasar por encima */
+  background-color: #777;
 }
 
 .close-button {
@@ -122,35 +122,35 @@ h1 {
 
 .header-container {
   display: flex;
-  align-items: center; /* Alinea verticalmente los elementos */
+  align-items: center;
   margin-left: 80px;
 }
 
 .header-container h1 {
-  margin-right: 10px; /* Espacio entre el texto y la imagen */
+  margin-right: 10px;
 }
 
 .time-list-container {
-  max-height: 300px; /* Altura máxima del contenedor de la lista */
-  overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .buttonCube {
-  background-color: #fff; /* Color de fondo blanco */
-  border: none; /* Elimina el borde */
-  color: #333; /* Color del texto */
-  padding: 15px 32px; /* Ajusta el relleno */
-  text-align: center; /* Centra el texto horizontalmente */
-  text-decoration: none; /* Elimina el subrayado del texto */
+  background-color: #fff;
+  border: none;
+  color: #333;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
-  font-size: 16px; /* Tamaño de la fuente */
-  margin: 4px 2px; /* Ajusta el margen */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  border-radius: 10px; /* Ajusta la esquina redondeada */
-  transition: background-color 0.3s, color 0.3s; /* Agrega transiciones suaves para el color de fondo y el color del texto */
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .buttonCube:hover {
-  background-color: #f0f0f0; /* Cambia el color de fondo al pasar por encima */
-  color: #666; /* Cambia el color del texto al pasar por encima */
+  background-color: #f0f0f0;
+  color: #666;
 }
